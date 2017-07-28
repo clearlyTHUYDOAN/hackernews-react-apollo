@@ -10,8 +10,8 @@ class Link extends Component {
     }
 }
 
-_voteForLink = async() => {
-    // will implement in chapter 6
-}
+// _voteForLink = async() => {
+//     // will implement in chapter 6
+// }
 
 export default Link;
