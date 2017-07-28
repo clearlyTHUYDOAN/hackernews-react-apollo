@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { graphql, gql } from 'react-apollo';
 import Link from './Link';
 
 class LinkList extends Component {
@@ -22,8 +23,6 @@ class LinkList extends Component {
         )
     }
 }
-
-export default LinkList;
 
 // When using Apollo, you've got two ways of sending queries to the servier.
 
@@ -52,6 +51,9 @@ i) write the query as a JS constant using the gql parser function
 ii) use the graphql container to wrap your component with the query
 iii) access the query results in the component's props */
 
+// stores the query
+// gql function is used to parse the plain GraphQL code
+// define plain GraphQL query
 const ALL_LINKS_QUERY = gql`
   # 2
   query AllLinksQuery {
@@ -64,4 +66,8 @@ const ALL_LINKS_QUERY = gql`
   }
 `
 
+// use graphql container to combine component with the query
+// also passing an option to the function call where you specify a name
+// - this is the name of the prop apollo injects into the linklist component
+// - if not specified, injected prop would be called 'data'
 export default graphql(ALL_LINKS_QUERY, { name: 'allLinksQuery' }) (LinkList);
